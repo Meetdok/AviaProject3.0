@@ -1,0 +1,25 @@
+﻿<Page x:Class="WpfProject.Pages.ListCompanysEmploy"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfProject.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ListCompanysEmploy">
+
+    <Grid Background="White">
+        <ListView ItemsSource="{Binding FlightCompany}" SelectedItem="{Binding SelectedItem}" Margin="0,30,0,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Название" DisplayMemberBinding="{Binding FlightCompanyName}"/>
+                    <GridViewColumn Header="Сервис" DisplayMemberBinding="{Binding Service.ServiceType}"/>
+                    <GridViewColumn Header="Стоимость сервиса" DisplayMemberBinding="{Binding Service.ServiceCost}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Редактировать" Click="EditCompanys" HorizontalAlignment="Left" Margin="351,0,0,0" VerticalAlignment="Top" Height="30"/>
+        <Button Content="Удалить" Command="{Binding DeleteCompany}" HorizontalAlignment="Left" Margin="441,0,0,0" VerticalAlignment="Top" Height="30"/>
+        <Button Content="Добавить" Click="AddCompanys" HorizontalAlignment="Left" Margin="289,0,0,0" VerticalAlignment="Top" Height="30"/>
+    </Grid>
+</Page>

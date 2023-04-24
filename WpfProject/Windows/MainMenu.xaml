@@ -1,0 +1,47 @@
+﻿<Window x:Class="WpfProject.Windows.MainMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfProject.Windows"
+        mc:Ignorable="d"
+        Title="Авиабилеты" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    
+    <Window.Resources>
+        <ContextMenu x:Key="ListView">
+            <MenuItem Header="Оформить" Click="FlightOrder" Background="#FFF7F6F6" />
+        </ContextMenu>
+    </Window.Resources>
+
+    <Grid>
+
+        <Menu VerticalAlignment="Top" Height="28">
+            <MenuItem Width="38" Height="32" Cursor="Hand">
+                <MenuItem.Background>
+                    <ImageBrush ImageSource="/Windows/User.png"/>
+                </MenuItem.Background>
+                <MenuItem Header="Билеты" Command="{Binding nav_tickets}"/>
+                <MenuItem Header="Настройки" Click="Settings"/>
+                <MenuItem Header="Выход" Click="Exit"/>
+            </MenuItem>
+            <MenuItem Header="Самолёты" Command="{Binding nav_airplanes}"/>
+            <MenuItem Header="Компании" Command="{Binding nav_companys}"/>
+            <MenuItem Header="Рейсы" Click="nav_flights"/>
+        </Menu>
+
+        <ListView Margin="0,28,0,0" ItemsSource="{Binding Flight}"  ContextMenu="{StaticResource ListView}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Рейс" DisplayMemberBinding="{Binding FlightTitle}"/>
+                    <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding FlightDate}"/>
+                    <GridViewColumn Header="Город прибытия" DisplayMemberBinding="{Binding FlightCityDeparture }"/>
+                    <GridViewColumn Header="Город отбытия" DisplayMemberBinding="{Binding FlightCityArrival }"/>
+                    <GridViewColumn Header="Компания" DisplayMemberBinding="{Binding FlightCompany.FlightCompanyName }"/>
+                    <GridViewColumn Header="Самолёт" DisplayMemberBinding="{Binding Airplane.AirplaneTitle }"/>
+                    <GridViewColumn Header="Места" DisplayMemberBinding="{Binding NumberOfSeats}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Frame Content="{Binding CurrentPage}" NavigationUIVisibility="Hidden" Margin="0,28,0,0"/>
+    </Grid>
+</Window>

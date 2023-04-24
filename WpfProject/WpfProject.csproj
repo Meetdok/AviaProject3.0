@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Eye.png" />
+    <None Remove="Windows\Back.png" />
+    <None Remove="Windows\User.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Eye.png" />
+    <Resource Include="Windows\Back.png" />
+    <Resource Include="Windows\User.png" />
+  </ItemGroup>
+
+</Project>
