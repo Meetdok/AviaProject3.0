@@ -17,6 +17,7 @@
             </MenuItem>
             <MenuItem Header="Самолёты" Command="{Binding nav_airplanes}"/>
             <MenuItem Header="Компании" Command="{Binding nav_companys}"/>
+            <MenuItem Header="Сервисы" Command="{Binding nav_service}"/>
             <MenuItem Header="Рейсы" Click="nav_flights"/>
         </Menu>
 

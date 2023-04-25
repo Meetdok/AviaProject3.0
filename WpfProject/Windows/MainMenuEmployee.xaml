@@ -9,10 +9,12 @@
 
     <Window.Resources>
         <ContextMenu x:Key="ListView">
+            <MenuItem Header="Добавить" Click="AddFlight" Background="#FFF7F6F6" />
             <MenuItem Header="Редактировать" Click="EditFlight" Background="#FFF7F6F6" />
-            <MenuItem Header="Удалить" Click="DeleteFlight" Background="#FFF7F6F6" />
+            <MenuItem Header="Удалить" Command="{Binding DeleteFlight}" Background="#FFF7F6F6" />
         </ContextMenu>
     </Window.Resources>
+
 
     <Grid>
         <Menu VerticalAlignment="Top" Height="28">
@@ -33,7 +35,7 @@
             <MenuItem Header="Рейсы" Click="nav_flights"/>
         </Menu>
 
-        <ListView Margin="0,28,0,0" ItemsSource="{Binding Flight}"  ContextMenu="{StaticResource ListView}">
+        <ListView Margin="0,28,0,0" ItemsSource="{Binding Flight}" SelectedItem="{Binding SelectedItem}"  ContextMenu="{StaticResource ListView}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Рейс" DisplayMemberBinding="{Binding FlightTitle}"/>

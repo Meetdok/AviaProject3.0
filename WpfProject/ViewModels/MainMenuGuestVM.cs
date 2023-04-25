@@ -26,6 +26,8 @@ namespace WpfProject.ViewModels
             Signal(nameof(CurrentPage));
         }
 
+        public Flight SelectedItem { get; set; }
+
         private List<Airplane> airplane;
         private List<Flight> flight;
         private List<FlightCompany> flightCompanie;
@@ -63,9 +65,15 @@ namespace WpfProject.ViewModels
             }
         }
 
+        public CommandVM DeleteFlight { get; set; }
 
         public CommandVM nav_airplanes { get; set; }
-        public CommandVM nav_companys { get; set; }        
+
+        public CommandVM nav_companys { get; set; }  
+
+        public CommandVM nav_service { get; set; }
+
+
         public CommandVM nav_tickets { get; set; }
        
         public CommandVM nav_companysEmploy { get; set; }
@@ -87,10 +95,10 @@ namespace WpfProject.ViewModels
                 Flight = HttpApi.Deserialize<List<Flight>>(json);
 
                 var json2 = await HttpApi.Post("Airplanes", "ListAirplanes", null);
-                Airplane = HttpApi.Deserialize<List<Airplane>>(json);
+                Airplane = HttpApi.Deserialize<List<Airplane>>(json2);
 
-                var json3 = await HttpApi.Post("FlightCompanys", "ListFlightCompanys", null);
-                FlightCompanie = HttpApi.Deserialize<List<FlightCompany>>(json);
+                var json3 = await HttpApi.Post("FlightCompanies", "ListFlightCompanys", null);
+                FlightCompanie = HttpApi.Deserialize<List<FlightCompany>>(json3);
 
             });
 
@@ -98,6 +106,23 @@ namespace WpfProject.ViewModels
             currentPageControl = new CurrentPageControl();
             currentPageControl.PageChanged += CurrentPageControl_PageChanged;
 
+
+            DeleteFlight = new CommandVM(async () =>
+            {
+                var json = await HttpApi.Post("Flights", "delete", SelectedItem.FlightsId);
+
+                Task.Run(async () =>
+                {
+                    var json = await HttpApi.Post("Flights", "ListFlights", null);
+                    Flight = HttpApi.Deserialize<List<Flight>>(json);
+
+                    var json2 = await HttpApi.Post("Airplanes", "ListAirplanes", null);
+                    Airplane = HttpApi.Deserialize<List<Airplane>>(json2);
+
+                    var json3 = await HttpApi.Post("FlightCompanies", "ListFlightCompanys", null);
+                    FlightCompanie = HttpApi.Deserialize<List<FlightCompany>>(json3);
+                });
+            });
 
             nav_airplanes = new CommandVM(() =>
             {
@@ -107,6 +132,11 @@ namespace WpfProject.ViewModels
             nav_airplanesEmploy = new CommandVM(() =>
             {
                 currentPageControl.SetPage(new ListAirplanesEmploy(null));
+            });
+
+            nav_service = new CommandVM(() =>
+            {
+                currentPageControl.SetPage(new ListService());
             });
 
             nav_companys = new CommandVM(() =>

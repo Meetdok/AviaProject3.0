@@ -56,5 +56,11 @@ namespace WpfProject.Windows
         {
 
         }
+
+        private void AddFlight(object sender, RoutedEventArgs e)
+        {
+            FlightsCreate f = new FlightsCreate();
+            f.Show();
+        }
     }
 }
