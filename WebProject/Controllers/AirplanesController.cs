@@ -57,12 +57,10 @@ namespace WebProject.Controllers
         public async Task<IActionResult> PutAirplane([FromBody]Airplane airplane)
         {
             input = airplane.AirplanesId;
-            if (input != airplane.AirplanesId)
-            {
-                return BadRequest();
-            }
+          
+            var origin = _context.Airplanes.Find(input);
 
-            _context.Entry(airplane).State = EntityState.Modified;
+            _context.Entry(origin).CurrentValues.SetValues(airplane);
 
             try
             {

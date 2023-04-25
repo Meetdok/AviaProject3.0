@@ -23,10 +23,10 @@ namespace WpfProject.Pages
     /// </summary>
     public partial class ListAirplanesEmploy : Page
     {
-        public ListAirplanesEmploy(Airplane airplane)
+        public ListAirplanesEmploy( )
         {
             InitializeComponent();
-            DataContext = new ListAirplanesVM(airplane);
+            DataContext = new ListAirplanesVM();
         }
        
         private void AddAirplane(object sender, RoutedEventArgs e)

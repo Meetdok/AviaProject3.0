@@ -18,7 +18,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Редактировать" Command="{Binding EditAirplane}" HorizontalAlignment="Left" Margin="353,0,0,0" VerticalAlignment="Top" Height="35"/>
+        <Button Content="Редактировать" Command="{Binding EditAirplane}" HorizontalAlignment="Left" Margin="353,0,0,0" VerticalAlignment="Top" Height="33"/>
         <Button Content="Удалить" Command="{Binding DeleteAirplane}" HorizontalAlignment="Left" Margin="443,0,0,0" VerticalAlignment="Top" Height="34"/>
         <Button Content="Добавить" Click="AddAirplane" HorizontalAlignment="Left" Margin="291,0,0,0" VerticalAlignment="Top" Height="33"/>
 

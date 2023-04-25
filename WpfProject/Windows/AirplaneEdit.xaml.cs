@@ -22,10 +22,11 @@ namespace WpfProject.Windows
     /// </summary>
     public partial class AirplaneEdit : Window
     {
-        public AirplaneEdit(Airplane airplane )
+        public AirplaneEdit(Airplane airplanes)
         {
             InitializeComponent();
-            DataContext = new ListAirplanesVM(airplane);
-        }              
-    }
+            DataContext = new EditAirplaneVM(airplanes);
+        }
+
+    }        
 }

@@ -25,7 +25,7 @@ namespace WpfProject.Windows
         public AirplaneAdd()
         {
             InitializeComponent();
-            DataContext = new ListAirplanesVM(null);
+            DataContext = new ListAirplanesVM();
         }
 
         private async void SaveAirplane(object sender, RoutedEventArgs e)
@@ -38,11 +38,7 @@ namespace WpfProject.Windows
             });
             User result = HttpApi.Deserialize<User>(json);
 
-            MessageBox.Show("Сохранилось!");
-
-            MainWindow m = new MainWindow();
-            m.Show();
-            this.Close();
+            MessageBox.Show("Сохранилось!");           
         }
     }
 }

@@ -131,7 +131,7 @@ namespace WpfProject.ViewModels
 
             nav_airplanesEmploy = new CommandVM(() =>
             {
-                currentPageControl.SetPage(new ListAirplanesEmploy(null));
+                currentPageControl.SetPage(new ListAirplanesEmploy());
             });
 
             nav_service = new CommandVM(() =>

@@ -26,7 +26,7 @@ namespace WpfProject.Pages
         public ListAirplanes( )
         {
             InitializeComponent();
-            DataContext = new ListAirplanesVM( null);
+            DataContext = new ListAirplanesVM();
         }      
     }
 }
